@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create</title>
+</head>
+<body>
+    <h1>Create</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="key">Key:</label>
+        <input type="text" name="key" required><br>
+        <label for="value">Value:</label>
+        <input type="text" name="value" required><br>
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+    <a href="{% url 'read' %}">View Data</a>
+</body>
+</html>

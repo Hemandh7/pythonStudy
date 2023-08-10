@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update</title>
+</head>
+<body>
+    <h1>Update</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="key">Select Key:</label>
+        <select name="key">
+            {% for key in data_dict.keys %}
+            <option value="{{ key }}">{{ key }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="value">New Value:</label>
+        <input type="text" name="value" required><br>
+        <input type="submit" value="Update">
+    </form>
+    <br>
+    <a href="{% url 'read' %}">View Data</a>
+</body>
+</html>

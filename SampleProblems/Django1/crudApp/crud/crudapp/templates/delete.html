@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete</title>
+</head>
+<body>
+    <h1>Delete</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="key">Select Key to Delete:</label>
+        <select name="key">
+            {% for key in data_dict.keys %}
+            <option value="{{ key }}">{{ key }}</option>
+            {% endfor %}
+        </select><br>
+        <input type="submit" value="Delete">
+    </form>
+    <br>
+    <a href="{% url 'read' %}">View Data</a>
+</body>
+</html>
