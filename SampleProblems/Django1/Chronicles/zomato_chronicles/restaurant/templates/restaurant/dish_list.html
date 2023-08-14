@@ -1,0 +1,13 @@
+<!-- restaurant/templates/restaurant/dish_list.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Dishes</h2>
+  <ul>
+    {% for dish in dishes %}
+      <li>{{ dish.name }} - {{ dish.price }}</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'dish_create' %}">Add Dish</a>
+{% endblock %}

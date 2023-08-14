@@ -1,0 +1,12 @@
+<!-- restaurant/templates/restaurant/order_list.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Orders</h2>
+  <ul>
+    {% for order in orders %}
+      <li>{{ order.customer_name }} - Status: {{ order.status }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

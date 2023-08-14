@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zomato Chronicles - Review Orders</title>
+</head>
+<body>
+    <h1>Review Orders</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer Name</th>
+                <th>Status</th>
+                <th>Dishes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.order_id }}</td>
+                <td>{{ order.customer_name }}</td>
+                <td>{{ order.status }}</td>
+                <td>
+                    <ul>
+                        {% for dish in order.dishes.all %}
+                        <li>{{ dish.name }} - ${{ dish.price }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <a href="{% url 'menu' %}">Back to Menu</a>
+    <form method="get">
+        <label for="status_filter">Filter by Status:</label>
+        <select id="status_filter" name="status_filter">
+            <option value="">All</option>
+            <option value="received">Received</option>
+            <option value="preparing">Preparing</option>
+            <option value="ready for pickup">Ready for Pickup</option>
+            <option value="delivered">Delivered</option>
+        </select>
+        <button type="submit">Apply Filter</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zomato Chronicles - Take Order</title>
+</head>
+<body>
+    <h1>Take Order</h1>
+
+    <form method="post" action="{% url 'take_order' %}">
+        {% csrf_token %}
+        <label for="customer_name">Customer Name:</label>
+        <input type="text" id="customer_name" name="customer_name" required><br>
+
+        <h2>Dishes</h2>
+<form method="post" action="{% url 'take_order' %}">
+    {% csrf_token %}
+    <label for="customer_name">Customer Name:</label>
+    <input type="text" id="customer_name" name="customer_name" required><br>
+
+    {% for dish in dishes %}
+    <label>
+        <input type="checkbox" name="dish_ids" value="{{ dish.dish_id }}">
+        {{ dish.name }} - ${{ dish.price }}
+    </label><br>
+    {% endfor %}
+
+    <button type="submit">Place Order</button>
+</form>
+<h2>Total Price: ${{ total_price }}</h2>
+</body>
+</html>
